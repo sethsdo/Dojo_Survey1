@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Dojos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/name_input.css') }}"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- linking a javascript file -->
+    <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/my_script.js') }}"></script> -->
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
+</head>
+
+    <body>
+        <div class="container">
+            <h3>Welcome to Whats Your Name</h3>
+            <!-- <form action='' method='post'>
+                Name: <input type='text' name='name'>
+                <input type="submit" style="display: none" />
+            </form> -->
+            {% with messages = get_flashed_messages() %} 
+                {% if messages %} 
+                    {% for message in messages %}
+                        <p class="red">{{message}}</p>
+                    {% endfor %}
+                {% endif %} 
+            {% endwith %}
+            <form action='/process' method='post'>
+                <div class="form-group">
+                    Name: <input type='text' class="form-control" id="name" name='name'>
+                </div>
+                <div class="form-group">
+                     Dojo Location: 
+                     <select name="location">
+                        <option value="SL">Silicon Valley</option>
+                        <option value="Sea">Seattle</option>
+                        <option value="LA">Los Angeles</option>
+                        <option value="dc">D.C</option>
+                     </select>
+                </div>
+                <div class="form-group"> 
+                    Favorite Location: 
+                    <select name="language">
+                        <option value="Python">Python</option>
+                        <option value="Java">Java</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Go">Go</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comment(optional):</label>
+                    <textarea class="form-control" name="comment" rows="5" id="comment"></textarea>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form> 
+    </body>
+
+</html>
